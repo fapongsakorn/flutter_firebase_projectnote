@@ -13,11 +13,9 @@ class _NewItemScreenState extends State<Additem> {
   final itemDesc = TextEditingController();
   final ItemService _itemService = ItemService();
   late String _timeString;
-
-  @override
   void initState() {
     _timeString =
-        "DAY ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}  TIME : ${DateTime.now().hour} : ${DateTime.now().minute}";
+        "DAY ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}  TIME : ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
     Timer.periodic(Duration(seconds: 1), (Timer t) => _getCurrentTime());
     super.initState();
   }
@@ -25,7 +23,7 @@ class _NewItemScreenState extends State<Additem> {
   void _getCurrentTime() {
     setState(() {
       _timeString =
-          "DAY ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}  TIME : ${DateTime.now().hour} : ${DateTime.now().minute}";
+          "DAY ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}  TIME : ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
     });
   }
 

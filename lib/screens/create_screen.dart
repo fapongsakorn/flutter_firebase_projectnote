@@ -29,8 +29,8 @@ class CreateAccount extends StatelessWidget {
           Container(
               child: Image.network(
             'asset/logo/register.png',
-            width: 200,
-            height: 200,
+            width: 150,
+            height: 150,
           )),
           SizedBox(
             height: 30,

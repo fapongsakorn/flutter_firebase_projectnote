@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../main.dart';
 import '../services/item_services.dart';
 
 class EditItemScreen extends StatefulWidget {
@@ -66,9 +67,27 @@ class _EditItemScreenState extends State<EditItemScreen> {
       "title": widget._itemName.text,
       "desc": widget._itemDesc.text
     });
+    if (true) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => MyHomePage()));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Update Sccessful"),
+        ),
+      );
+    }
   }
 
   void _deleteItem() {
     _itemService.deleteItem(widget._itemName.text);
+    if (true) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => MyHomePage()));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Delete Sccessful"),
+        ),
+      );
+    }
   }
 }

@@ -11,6 +11,7 @@ import 'package:flutter_firebase_projectnote/screens/edititem.dart';
 import 'package:flutter_firebase_projectnote/screens/additem.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -44,8 +45,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final service = AuthService();
-    User? currentuser = service.user;
+    final _service = AuthService();
+    User? currentuser = _service.user;
     String displayEmail = "";
     String displayName = "";
     if (currentuser != null && currentuser.email != null) {
@@ -53,7 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("items").snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection(_service.user!.email.toString())
+            .snapshots(),
         builder: ((context, snapshot) {
           final dataDocuments = snapshot.data?.docs;
           if (dataDocuments == null) return const Text("No data");
